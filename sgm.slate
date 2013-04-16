@@ -1,0 +1,48 @@
+# sgm.slate configuration
+
+# CONFIGS
+config defaultToCurrentScreen true
+
+# ALIASES
+alias hyper ctrl,alt,shift,cmd
+alias screenXHalf (screenSizeX/2)
+
+#alias iTunesMiniPlayerSet screenOriginX+3;screenOriginY+976 305;48
+
+# LAYOUTS
+
+	## iTunes Mini Placement
+	#layout iTunesMiniPut 'iTunes' TITLE_ORDER='MiniPlayer';'iTunes' move:(screenOriginX);(screenOriginY)
+	layout iTunesMiniPut 'iTunes' push down
+
+
+# BINDINGS
+
+	## Show/hide hidden files
+	bind 0:${hyper} shell path:~/ 'killall Finder'
+
+	## Current screen throws (IJKL for full-screen, halves, and hide)
+	bind left:${hyper} corner top-left resize:${screenXHalf};screenSizeY
+	bind j:${hyper} corner top-left resize:${screenXHalf};screenSizeY
+
+	bind right:${hyper} corner top-right resize:${screenXHalf};screenSizeY
+	bind l:${hyper} corner top-right resize:${screenXHalf};screenSizeY
+
+	bind up:${hyper} corner top-left resize:screenSizeX;screenSizeY
+	bind i:${hyper} corner top-left resize:screenSizeX;screenSizeY
+
+	bind down:${hyper} hide 'current'
+	bind k:${hyper} hide 'current'
+
+	## Across-screen throws (to full-screen)
+	bind u:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY left
+	bind o:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY right
+
+
+	## Place the iTunes Mini-player
+	bind ]:${hyper} layout iTunesMiniPut
+	
+
+
+	## Application control
+	bind f:${hyper} focus 'Firefox'
